@@ -1,6 +1,5 @@
 import mysql from 'mysql';
 import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -33,80 +32,74 @@ connection.on('error', (err) => {
     }
 });
 
-export const ClientsCreate = async (req, res) => {
-    const { name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const VehiclesCreate = (req, res) => {
+    const { client_id, vin, vehicle_type } = req.body;
 
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        connection.query(
-            'CALL Clients_create(?, ?, ?, ?, ?, ?, ?)',
-            [name, email, hashedPassword, phone_number, adress, profile_picture, language],
-            (err, results) => {
-                if (err) {
-                    return res.status(500).json({ error: err.message });
-                }
-                const message = results[0]?.message || 'Client created successfully';
-                res.status(201).json({ message, data: results });
+    connection.query(
+        'CALL Vehicles_create(?, ?, ?)',
+        [client_id, vin, vehicle_type],
+        (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
             }
-        );
-    } catch (err) {
-        res.status(500).json({ error: 'Error hashing password' });
-    }
+            const message = results[0]?.message || 'Vehicle created successfully';
+            res.status(201).json({ message, data: results });
+        }
+    );
 };
 
-export const ClientsGetById = (req, res) => {
+export const VehiclesGetById = (req, res) => {
     const id = req.query.id;
 
     connection.query(
-        'CALL Clients_getById(?)',
+        'CALL Vehicles_getById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
             if (results[0].length === 0) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Vehicle not found' });
             }
-            const clientData = results[0][0];
-            res.status(200).json({ message: 'Client retrieved successfully', data: clientData });
+            const vehicleData = results[0][0];
+            res.status(200).json({ message: 'Vehicle retrieved successfully', data: vehicleData });
         }
     );
 };
 
-export const ClientsUpdate = (req, res) => {
-    const { id, name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const VehiclesUpdate = (req, res) => {
+    const { id, vin, vehicle_type } = req.body;
 
     connection.query(
-        'CALL Clients_updateById(?, ?, ?, ?, ?, ?, ?, ?)',
-        [id, name, email, password, phone_number, adress, profile_picture, language],
+        'CALL Vehicles_updateById(?, ?, ?)',
+        [id, vin, vehicle_type],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            const message = results[0]?.message || 'Client updated successfully';
+            const message = results[0]?.message || 'Vehicle updated successfully';
             res.status(200).json({ message, data: results });
         }
     );
 };
 
-export const ClientsDelete = (req, res) => {
+export const VehiclesDelete = (req, res) => {
     const id = req.query.id;
-    
+
     connection.query(
-        'CALL Clients_deleteById(?)',
+        'CALL Vehicles_deleteById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-    
-            const message = results[0]?.[0]?.message || 'Client deleted successfully';
-    
+
+            const message = results[0]?.[0]?.message || 'Vehicle deleted successfully';
+
             if (!results[0]?.[0] || message.includes('not found')) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Vehicle not found' });
             }
-    
+
             res.status(200).json({ message });
         }
     );

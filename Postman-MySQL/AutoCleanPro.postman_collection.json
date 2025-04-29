@@ -1,0 +1,1276 @@
+{
+	"info": {
+		"_postman_id": "c8bcc6b0-023a-437c-ada5-615173beadbe",
+		"name": "AutoCleanPro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30244499"
+	},
+	"item": [
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "client create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test password",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0101010101",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "somewhere street",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"value": "test profile_picture",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "FR",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}client-create",
+							"host": [
+								"{{url}}client-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}client-getById?id=1",
+							"host": [
+								"{{url}}client-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pipi",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}client-updateById",
+							"host": [
+								"{{url}}client-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}client-deleteById?id=4",
+							"host": [
+								"{{url}}client-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "vehicle create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "vin",
+									"value": "123123412312",
+									"type": "text"
+								},
+								{
+									"key": "vehicle_type",
+									"value": "Bike",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}vehicle-create",
+							"host": [
+								"{{url}}vehicle-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}vehicle-getById?id=1",
+							"host": [
+								"{{url}}vehicle-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "vin",
+									"value": "123123213",
+									"type": "text"
+								},
+								{
+									"key": "vehicle_type",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}vehicle-updateById",
+							"host": [
+								"{{url}}vehicle-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}vehicle-deleteById?id=4",
+							"host": [
+								"{{url}}vehicle-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agencies",
+			"item": [
+				{
+					"name": "agency create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "ACP rouen",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "18 allee des moutardes",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Rouen",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0101010101",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ACP_Rouen@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}agency-create",
+							"host": [
+								"{{url}}agency-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agency getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}agency-getById?id=1",
+							"host": [
+								"{{url}}agency-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agency updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "19 allee des moutardes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}agency-updateById",
+							"host": [
+								"{{url}}agency-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agency deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}agency-deleteById?id=4",
+							"host": [
+								"{{url}}agency-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "employee create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "agency_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Matthieu Berger",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bla bla bla",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123123",
+									"type": "text"
+								},
+								{
+									"key": "is_admin",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}employee-create",
+							"host": [
+								"{{url}}employee-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employee getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}employee-getById?id=1",
+							"host": [
+								"{{url}}employee-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employee updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pipi",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "adress",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}employee-updateById?id=1&password=caca",
+							"host": [
+								"{{url}}employee-updateById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "password",
+									"value": "caca"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employee deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}employee-deleteById?id=4",
+							"host": [
+								"{{url}}employee-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shifts",
+			"item": [
+				{
+					"name": "Shifts create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "employee_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "shift_start",
+									"value": "2025-05-01 09:00:00,",
+									"type": "text"
+								},
+								{
+									"key": "shift_end",
+									"value": "2025-05-01 17:00:00,",
+									"type": "text"
+								},
+								{
+									"key": "covered",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}shift-create",
+							"host": [
+								"{{url}}shift-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shifts getByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}shift-getById?id=1",
+							"host": [
+								"{{url}}shift-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shift updateByID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "shift_start",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "shift_end",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "covered",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}shift-updateById",
+							"host": [
+								"{{url}}shift-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shifts deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}shift-deleteById?id=1",
+							"host": [
+								"{{url}}shift-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "appointment create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "vehicle_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "shift_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cleaning_type_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}appointment-create",
+							"host": [
+								"{{url}}appointment-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}appointment-getById?id=1",
+							"host": [
+								"{{url}}appointment-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment  updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cleaning_type",
+									"value": "interrior",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}appointment-updateById",
+							"host": [
+								"{{url}}appointment-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appointment deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}appointment-deleteById?id=4",
+							"host": [
+								"{{url}}appointment-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cleaning types",
+			"item": [
+				{
+					"name": "cleaning type create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "interrior",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50.99",
+									"type": "text"
+								},
+								{
+									"key": "discount_price",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}cleaning-type-create",
+							"host": [
+								"{{url}}cleaning-type-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cleaning type getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}cleaning-type-getById?id=1",
+							"host": [
+								"{{url}}cleaning-type-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cleaning type updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "discount_price",
+									"value": "50.99",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}cleaning-type-updateById",
+							"host": [
+								"{{url}}cleaning-type-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cleaning type deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}cleaning-type-deleteById?id=4",
+							"host": [
+								"{{url}}cleaning-type-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "product create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "agency_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "wind shield whippers",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "discount_price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}product-create",
+							"host": [
+								"{{url}}product-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}product-getById?id=1",
+							"host": [
+								"{{url}}product-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "22",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}product-updateById",
+							"host": [
+								"{{url}}product-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}product-deleteById?id=4",
+							"host": [
+								"{{url}}product-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sold product",
+			"item": [
+				{
+					"name": "sold product create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sold_price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "agency_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}sold-product-create",
+							"host": [
+								"{{url}}sold-product-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sold product getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}sold-product-getById?id=1",
+							"host": [
+								"{{url}}sold-product-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sold product updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "discount_price",
+									"value": "50.99",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}sold-product-updateById",
+							"host": [
+								"{{url}}sold-product-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sold product deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}sold-product-deleteById?id=4",
+							"host": [
+								"{{url}}sold-product-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog Posts",
+			"item": [
+				{
+					"name": "blog post create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "employee_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "test 1",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "title 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}blog-post-create",
+							"host": [
+								"{{url}}blog-post-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "blog post getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}blog-post-getById?id=1",
+							"host": [
+								"{{url}}blog-post-getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "blog post updateById",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "test 3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}blog-post-updateById",
+							"host": [
+								"{{url}}blog-post-updateById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sblog post deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}blog-post-deleteById?id=4",
+							"host": [
+								"{{url}}blog-post-deleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

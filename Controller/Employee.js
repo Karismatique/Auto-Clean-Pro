@@ -33,20 +33,25 @@ connection.on('error', (err) => {
     }
 });
 
-export const ClientsCreate = async (req, res) => {
-    const { name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const EmployeesCreate = async (req, res) => {
+    const { agency_id, name, email, password, is_admin } = req.body;
+
+    if (!password || password === '') {
+        return res.status(400).json({ error: 'Password is required' });
+    }
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         connection.query(
-            'CALL Clients_create(?, ?, ?, ?, ?, ?, ?)',
-            [name, email, hashedPassword, phone_number, adress, profile_picture, language],
+            'CALL Employees_create(?, ?, ?, ?, ?)',
+            [agency_id, name, email, hashedPassword, is_admin],
             (err, results) => {
                 if (err) {
                     return res.status(500).json({ error: err.message });
                 }
-                const message = results[0]?.message || 'Client created successfully';
+
+                const message = results[0]?.message || 'Employee created successfully';
                 res.status(201).json({ message, data: results });
             }
         );
@@ -55,58 +60,71 @@ export const ClientsCreate = async (req, res) => {
     }
 };
 
-export const ClientsGetById = (req, res) => {
+export const EmployeesGetById = (req, res) => {
     const id = req.query.id;
 
     connection.query(
-        'CALL Clients_getById(?)',
+        'CALL Employees_getById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
+
             if (results[0].length === 0) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Employee not found' });
             }
-            const clientData = results[0][0];
-            res.status(200).json({ message: 'Client retrieved successfully', data: clientData });
+
+            const employeeData = results[0][0];
+            res.status(200).json({ message: 'Employee retrieved successfully', data: employeeData });
         }
     );
 };
 
-export const ClientsUpdate = (req, res) => {
-    const { id, name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const EmployeesUpdate = async (req, res) => {
+    const { id, name, email, password, is_admin } = req.body;
 
-    connection.query(
-        'CALL Clients_updateById(?, ?, ?, ?, ?, ?, ?, ?)',
-        [id, name, email, password, phone_number, adress, profile_picture, language],
-        (err, results) => {
-            if (err) {
-                return res.status(500).json({ error: err.message });
-            }
-            const message = results[0]?.message || 'Client updated successfully';
-            res.status(200).json({ message, data: results });
+    try {
+        let hashedPassword = password;
+
+        if (password && password !== '') {
+            hashedPassword = await bcrypt.hash(password, 10);
         }
-    );
+
+        connection.query(
+            'CALL Employees_updateById(?, ?, ?, ?, ?)',
+            [id, name, email, hashedPassword, is_admin],
+            (err, results) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+
+                const message = results[0]?.message || 'Employee updated successfully';
+                res.status(200).json({ message, data: results });
+            }
+        );
+    } catch (err) {
+        res.status(500).json({ error: 'Error hashing password' });
+    }
 };
 
-export const ClientsDelete = (req, res) => {
+export const EmployeesDelete = (req, res) => {
     const id = req.query.id;
-    
+
     connection.query(
-        'CALL Clients_deleteById(?)',
+        'CALL Employees_deleteById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-    
-            const message = results[0]?.[0]?.message || 'Client deleted successfully';
-    
+
+            const message = results[0]?.[0]?.message || 'Employee deleted successfully';
+
             if (!results[0]?.[0] || message.includes('not found')) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Employee not found' });
             }
-    
+
             res.status(200).json({ message });
         }
     );

@@ -1,6 +1,5 @@
 import mysql from 'mysql';
 import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -33,80 +32,74 @@ connection.on('error', (err) => {
     }
 });
 
-export const ClientsCreate = async (req, res) => {
-    const { name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const SoldProductsCreate = (req, res) => {
+    const { product_id, agency_id, sold_price } = req.body;
 
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        connection.query(
-            'CALL Clients_create(?, ?, ?, ?, ?, ?, ?)',
-            [name, email, hashedPassword, phone_number, adress, profile_picture, language],
-            (err, results) => {
-                if (err) {
-                    return res.status(500).json({ error: err.message });
-                }
-                const message = results[0]?.message || 'Client created successfully';
-                res.status(201).json({ message, data: results });
+    connection.query(
+        'CALL SoldProducts_create(?, ?, ?)',
+        [product_id, agency_id, sold_price],
+        (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
             }
-        );
-    } catch (err) {
-        res.status(500).json({ error: 'Error hashing password' });
-    }
+            const message = results[0]?.message || 'Sold product created successfully';
+            res.status(201).json({ message, data: results });
+        }
+    );
 };
 
-export const ClientsGetById = (req, res) => {
+export const SoldProductsGetById = (req, res) => {
     const id = req.query.id;
 
     connection.query(
-        'CALL Clients_getById(?)',
+        'CALL SoldProducts_getById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
             if (results[0].length === 0) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Sold product not found' });
             }
-            const clientData = results[0][0];
-            res.status(200).json({ message: 'Client retrieved successfully', data: clientData });
+            const soldProductData = results[0][0];
+            res.status(200).json({ message: 'Sold product retrieved successfully', data: soldProductData });
         }
     );
 };
 
-export const ClientsUpdate = (req, res) => {
-    const { id, name, email, password, phone_number, adress, profile_picture, language } = req.body;
+export const SoldProductsUpdate = (req, res) => {
+    const { id, sold_price, agency_id } = req.body;
 
     connection.query(
-        'CALL Clients_updateById(?, ?, ?, ?, ?, ?, ?, ?)',
-        [id, name, email, password, phone_number, adress, profile_picture, language],
+        'CALL SoldProducts_updateById(?, ?, ?)',
+        [id, sold_price, agency_id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            const message = results[0]?.message || 'Client updated successfully';
+            const message = results[0]?.message || 'Sold product updated successfully';
             res.status(200).json({ message, data: results });
         }
     );
 };
 
-export const ClientsDelete = (req, res) => {
+export const SoldProductsDelete = (req, res) => {
     const id = req.query.id;
-    
+
     connection.query(
-        'CALL Clients_deleteById(?)',
+        'CALL SoldProducts_deleteById(?)',
         [id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-    
-            const message = results[0]?.[0]?.message || 'Client deleted successfully';
-    
+
+            const message = results[0]?.[0]?.message || 'Sold product deleted successfully';
+
             if (!results[0]?.[0] || message.includes('not found')) {
-                return res.status(404).json({ message: 'Client not found' });
+                return res.status(404).json({ message: 'Sold product not found' });
             }
-    
+
             res.status(200).json({ message });
         }
     );
