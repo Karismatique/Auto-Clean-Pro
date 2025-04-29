@@ -95,7 +95,7 @@ erDiagram
     APPOINTMENTS ||--o| CLEANING_TYPES : includes
     APPOINTMENTS ||--o| VEHICLES : assigns
     CLIENTS ||--o| VEHICLES : owns
-    VEHICLES ||--o| SOLD_PRODUCTS : relates_to
+    PRODUCTS ||--o| SOLD_PRODUCTS : relates_to
     PRODUCTS ||--o| AGENCIES : belongs_to
     SOLD_PRODUCTS ||--o| AGENCIES : sold_by
     APPOINTMENTS ||--o| COMMENTS : receives
