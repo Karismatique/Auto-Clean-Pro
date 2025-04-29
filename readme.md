@@ -89,15 +89,15 @@ erDiagram
         string vehicle_type
     }
 
-    AGENCIES ||--o| EMPLOYEES : has
-    EMPLOYEES ||--o| SHIFTS : works
+    AGENCIES ||--o{ EMPLOYEES : has
+    EMPLOYEES ||--o{ SHIFTS : works
     SHIFTS ||--o| APPOINTMENTS : schedules
     APPOINTMENTS ||--o| CLEANING_TYPES : includes
     APPOINTMENTS ||--o| VEHICLES : assigns
-    CLIENTS ||--o| VEHICLES : owns
+    CLIENTS ||--o{ VEHICLES : owns
     PRODUCTS ||--o| SOLD_PRODUCTS : relates_to
-    PRODUCTS ||--o| AGENCIES : belongs_to
-    SOLD_PRODUCTS ||--o| AGENCIES : sold_by
+    PRODUCTS }o--|| AGENCIES : belongs_to
+    SOLD_PRODUCTS |o--|| AGENCIES : sold_by
     APPOINTMENTS ||--o| COMMENTS : receives
-    BLOG_POSTS ||--o| EMPLOYEES : written_by
+    BLOG_POSTS |o--|| EMPLOYEES : written_by
 ```
