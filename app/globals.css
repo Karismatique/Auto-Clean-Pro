@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1e3a8a;
+  --secondary: #10b981;
+  --background: #ffffff;
+  --text: #4b5563;
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#1E3A8A] text-white font-semibold py-2 px-6 rounded-md hover:bg-[#152a66] transition-colors duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-[#10B981] text-white font-semibold py-2 px-6 rounded-md hover:bg-[#0d9669] transition-colors duration-300;
+  }
+
+  .btn-outline {
+    @apply border border-[#1E3A8A] text-[#1E3A8A] font-semibold py-2 px-6 rounded-md hover:bg-[#1E3A8A] hover:text-white transition-colors duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-center mb-12;
+  }
+}
